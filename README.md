@@ -1,4 +1,4 @@
-# Fast API Template
+# {{ template }}
 
 ![GitHub License](https://img.shields.io/github/license/dixonwhitmire/fastapi-template)
 ![Supported Versions](https://img.shields.io/badge/python%20version-3.8%2C%203.9-blue)
@@ -12,7 +12,8 @@
 
 ## Getting Started
 
-Fast API Template is a "template" project used to create Fast API applications targeting Python 3.8 - 3.9.
+#TODO: Once the project is cloned, update badge links above for the actual project URL. Replace occurrences of {{ template }} in documentation with the project name.
+
 
 ### Required Software
 The {{ template }} development environment requires the following:
@@ -119,12 +120,15 @@ The {{ template }} docker image is an "incubating" feature and is subject to cha
 #### Build the image
 The {{ template }} image build integrates the application's x509 certificate (PEM encoded) into the image.
 
-The `APPLICATION_CERT_PATH` build argument is used to specify the location of the certificate on the host machine.
-If the `APPLICATION_CERT_PATH` build argument is not provided, a default value of ./local-certs/lfh.pem is used.
+The `APP_CERT_PATH_BUILD_ARG` build argument is used to specify the location of the certificate on the host machine.
+If the `APP_CERT_PATH_BUILD_ARG` build argument is not provided, a default value of ./local-config/app is used.
 
 #### Build the image with Docker CLI
 ```shell
-docker build --build-arg APPLICATION_BUILD_CERT_PATH=./local-config/ -t {{ template }}:0.42.0 .
+docker build \
+       --build-arg APP_CERT_PATH_BUILD_ARG=./local-config/ \ 
+       --build-arg APP_CONFIG_PATH_BUILD_ARG=./local-config/ \
+       -t {{ template }}:0.42.0 .
 ```
 
 #### Build the image with Docker-Compose
